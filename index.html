@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pokedex.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<script src="https://unpkg.com/vue@3"></script>
+
+
+<body :class="tipo">
+
+  <div id="app">
+    <div class="container" :class="tipo">
+      <header></header>
+      <section>
+        <input type="text" placeholder="Pokemon" id="pokeName" name="pokeName" autofocus><button
+          v-on:click="cambiarPokemon()" class="fa fa-search  fa-2x" :class="tipo"></button><br>
+
+        <br>
+
+        <h1> {{nombre}}</h1>
+        <div v-if="e">
+          <div class="icon" :class="tipo">
+            <img :src=`icons/${tipo}.svg` />
+          </div>
+
+          <div v-if="tipo2" class="icon" :class="tipo2">
+            <img :src=`icons/${tipo2}.svg` />
+          </div>
+        </div>
+
+        <div class="centro">
+          <div v-if="e" class="izq">
+            <table class="tableleft center">
+              <tr>
+                <td class="text-right">ID</td>
+                <td class="text-left">#{{numero}}</td>
+              </tr>
+              <tr>
+                <td class="text-right">Height</td>
+                <td class="text-left">{{altura}}m</td>
+              </tr>
+              <tr>
+                <td class="text-right">Weight</td>
+                <td class="text-left">{{peso}}kg</td>
+              </tr>
+              <tr>
+                <td class="text-right">Ability</td>
+                <td class="text-left" :class="tipo">{{habilidad}}</td>
+                <td :class="tipo">{{habilidad2}}</td>
+              </tr>
+              <tr>
+                <td class="text-right">Type</td>
+                <td class="text-left" :class="tipo">
+                  {{tipo}}
+                </td>
+                <td v-if="tipo2" class="text-left" :class="tipo2">{{tipo2}}</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="cen">
+            <img v-bind:src="pokeImg" id="pokeImg" alt="pokeImg">
+          </div>
+
+          <div v-if="e" class="stats">
+
+            <table class="tableright center">
+              <tr>
+                <td class="text-right">HP</td>
+                <td class="text-left">
+                  <div class="meter"><span v-bind:style="{width: hpb + '%'}">{{hp}}</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right">Attack</td>
+                <td class="text-left">
+                  <div class="meter"><span v-bind:style="{width: ataqueb + '%'}">{{ataque}}</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right">Defense</td>
+                <td class="text-left">
+                  <div class="meter"><span v-bind:style="{width: defensab + '%'}">{{defensa}}</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right">Sp.Attack</td>
+                <td class="text-left">
+                  <div class="meter"><span v-bind:style="{width: spattackb + '%'}">{{spattack}}</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right">Sp.Defense</td>
+                <td class="text-left">
+                  <div class="meter"><span v-bind:style="{width: spdefenseb + '%'}">{{spdefense}}</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right">Speed</td>
+                <td class="text-left">
+
+                  <div class="meter"><span v-bind:style="{width: speedb + '%'}">{{speed}}</span></div>
+
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right">Total</td>
+                <td class="text-left">{{sum}}</td>
+              </tr>
+            </table>
+
+
+          </div>
+        </div><br>
+      </section>
+
+
+      <footer></footer>
+
+
+
+    </div>
+  </div>
+  <script src="./app.js"></script>
+
+</body>
+
+</html>
